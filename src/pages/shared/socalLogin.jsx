@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthContext';
+import { useLocation, useNavigate } from 'react-router';
 
 
 
@@ -9,11 +10,14 @@ import { AuthContext } from '../../context/AuthContext';
 
 const SocailLogin = () => {
  const {singInWithGoogle}=useContext(AuthContext)
- 
+ const location=useLocation()
+ const navigate=useNavigate()
+ const from =location.state?.from || '/'
      const handleGoogle=()=>{
         singInWithGoogle()
         .then(result=>{
             console.log(result.user)
+            navigate(from)
           
 
             Swal.fire({

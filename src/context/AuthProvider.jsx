@@ -3,11 +3,13 @@ import { AuthContext } from './AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfing';
 
+
 const googleProvider =new GoogleAuthProvider()
 const AuthProvider = ({children}) => {
 
     const [loading,setLoading]=useState(true)
     const [user,setUser]=useState(null)
+    
 
     // singUP
 const createUser=(email,password)=>{
@@ -42,7 +44,6 @@ return()=>{
 }
 
 } ,[])
-
 
 
 

@@ -4,7 +4,10 @@ import bannerImg from '../../../assets/banner.jpg'; // এখানে তোম
 
 const Banner = () => {
   return (
-    <section className="bg-gradient-to-r from-sky-100 to-blue-50 py-10 md:py-20">
+  <div data-aos="flip-left"
+     data-aos-easing="ease-out-cubic"
+     data-aos-duration="2000" >
+      <section className="bg-gradient-to-r from-sky-100 to-blue-50 py-10 md:py-20">
       <div className="max-w-7xl mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between gap-10">
         
         {/* Text Content */}
@@ -32,6 +35,7 @@ const Banner = () => {
         </div>
       </div>
     </section>
+  </div>
   );
 };
 

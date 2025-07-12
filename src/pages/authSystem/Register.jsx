@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 import SocailLogin from '../shared/socalLogin';
 import loginImg from '../../assets/loginImg.jpg';
 
 const Register = () => {
+  const location=useLocation()
+  const navigate =useNavigate()
+  const from =location.state?.from || '/'
   const {
     register,
     handleSubmit,
@@ -19,7 +22,7 @@ const Register = () => {
     createUser(data.email, data.password)
       .then((result) => {
         console.log(result);
-        // You can redirect or show success here
+        navigate(from)
       })
       .catch((error) => {
         console.error(error);

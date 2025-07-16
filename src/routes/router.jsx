@@ -16,6 +16,7 @@ import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 import ClassDetails from "../pages/HomePage/component/ClassDetails";
 import PaymentPage from "../pages/HomePage/component/paymentPage";
 import CheckoutForm from "../pages/HomePage/component/checkOutFrom";
+import MyEnrollClasses from "../Dashboard/MyEnrollClass";
 
 
  export const router = createBrowserRouter([
@@ -48,7 +49,7 @@ import CheckoutForm from "../pages/HomePage/component/checkOutFrom";
       </PrivateRoutes>
     },
     {
-      path:'/paymentPage/:id',
+      path:'/paymentPage/:paymentId',
       element:<PrivateRoutes>
         <PaymentPage></PaymentPage>
       </PrivateRoutes>
@@ -78,6 +79,10 @@ import CheckoutForm from "../pages/HomePage/component/checkOutFrom";
 {
   path:'updateClass/:id',
   Component:UpdateClass
+},
+{
+  path:'my-enroll-class',
+  Component:MyEnrollClasses
 }
     ]
   }

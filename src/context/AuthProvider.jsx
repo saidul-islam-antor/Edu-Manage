@@ -17,7 +17,7 @@ const createUser=(email,password)=>{
     return createUserWithEmailAndPassword(auth,email,password)
 }
 // singIn
-const singINUser=(email,password)=>{
+const singIn=(email,password)=>{
     setLoading(true)
     return signInWithEmailAndPassword(auth, email, password)
 }
@@ -49,7 +49,7 @@ return()=>{
 
 const authInfo={
     createUser,
-    singINUser,
+    singIn,
     logOut,
     singInWithGoogle,
     user,

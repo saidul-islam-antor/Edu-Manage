@@ -37,6 +37,7 @@ const DashboardLayout = () => {
           <NavItem to="/dashboard/addClasses" icon={<FaPlusCircle />}>Add Class</NavItem>
           <NavItem to="/dashboard/myClasses" icon={<FaChalkboardTeacher />}>My Class</NavItem>
           <NavItem to="/dashboard/profile" icon={<FaUserCircle />}>Profile</NavItem>
+          <NavItem to="/dashboard/my-enroll-class" icon={<FaUserCircle />}>my Enroll class</NavItem>
         </div>
       </div>
 

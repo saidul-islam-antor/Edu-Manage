@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../hooks/UseAxoisPublic';
+import Loading from '../../shared/Loading/Loading';
 
 
 const ClassDetails = () => {
@@ -16,11 +17,12 @@ const ClassDetails = () => {
     },
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading></Loading>;
 
   return (
     <div className="max-w-7xl mx-auto py-10">
-      <img src={classInfo.image} alt={classInfo.title} className="w-full  rounded mb-6" />
+      <div>
+        <img src={classInfo.image} alt={classInfo.title} className="w-24  rounded mb-6" />
       <h2 className="text-3xl font-bold mb-2">{classInfo.title}</h2>
       <p className="mb-2 text-lg font-semibold">Teacher: {classInfo.instructorName}</p>
       <p className="mb-2 text-gray-600">{classInfo.description}</p>
@@ -32,6 +34,7 @@ const ClassDetails = () => {
       >
         Pay Now
       </button>
+      </div>
     </div>
   );
 };

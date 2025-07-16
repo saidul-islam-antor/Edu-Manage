@@ -1,11 +1,115 @@
-import React from 'react';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext, useState } from 'react';
+import { useNavigate, useParams } from 'react-router';
+import useAxiosSecure from '../../../hooks/UseAxoisSecure';
+import Loading from '../../shared/Loading/Loading';
+import { AuthContext } from '../../../context/AuthContext';
+import Swal from 'sweetalert2';
 
-const checkOutFrom = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+const CheckoutForm = () => {
+  const stripe = useStripe();
+  const elements = useElements();
+  const { paymentId } = useParams();
+  const axiosSecure = useAxiosSecure();
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const [error, setError] = useState('');
+
+
+  const { data: paymentInfo = {}, isPending } = useQuery({
+    queryKey: ['classDetails', paymentId],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/classes/${paymentId}`);
+      return res.data;
+    }
+  });
+
+  if (isPending) return <Loading />;
+
+  const price = Number(paymentInfo.price);
+  const amountInCents = Math.round(price * 100);
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (!stripe || !elements) return;
+
+  const card = elements.getElement(CardElement);
+
+  const { error: createError } = await stripe.createPaymentMethod({
+    type: 'card',
+    card,
+  });
+
+  if (createError) {
+    setError(createError.message);
+    return;
+  }
+
+  const { data } = await axiosSecure.post('/create-payment-intent', {
+    price: amountInCents,
+    paymentId,
+  });
+
+  const clientSecret = data.clientSecret;
+
+  const result = await stripe.confirmCardPayment(clientSecret, {
+    payment_method: {
+      card,
+      billing_details: {
+        name: user?.displayName || 'Anonymous',
+        email: user?.email || 'No email',
+      },
+    },
+  });
+
+  if (result.error) {
+    setError(result.error.message);
+  } else if (result.paymentIntent.status === 'succeeded') {
+    setError('');
+
+    // Save payment info
+    const paymentData = {
+      userName: user?.displayName,
+      userEmail: user?.email,
+      classId: paymentInfo._id,
+      title: paymentInfo.title,
+      image: paymentInfo.image,
+      transactionId: result.paymentIntent.id,
+      price: paymentInfo.price,
+      date: new Date(),
+    };
+
+    const res = await axiosSecure.post('/payments', paymentData);
+
+    if (res.data.insertResult?.insertedId || res.data.insertedId) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Payment Successful!',
+        text: `Transaction ID: ${result.paymentIntent.id}`,
+        confirmButtonText: 'Go to My Enroll Page'
+      }).then(() => {
+        navigate('/dashboard/my-enroll-class'); // ✅ this must run only after alert OK
+      });
+    }
+  }
 };
 
-export default checkOutFrom;
+
+  return (
+    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto">
+      <CardElement className="border p-4 rounded mb-4" />
+      <button
+        type="submit"
+        disabled={!stripe}
+        className="bg-blue-600 w-full text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+      >
+        { `Pay ${price}`}
+      </button>
+      {error && <div className="text-red-500 mt-2">{error}</div>}
+    </form>
+  );
+};
+
+export default CheckoutForm;

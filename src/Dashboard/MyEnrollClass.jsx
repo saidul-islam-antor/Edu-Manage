@@ -45,10 +45,10 @@ const MyEnrollClasses = () => {
             />
             <div className="p-4">
               <h3 className="text-xl font-semibold mb-2">{cls.title}</h3>
-              <p className="text-gray-700 mb-4">Instructor: {cls.instructorName}</p>
+              <p className="text-gray-700 mb-4">Instructor: {}</p>
 
               <button
-                onClick={() => navigate(`/class-details/${cls.classId}`)} // তোমার class detail পেজের রাউট
+                onClick={() => navigate(`/my-enroll-class/${cls._id}`)} 
                 className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
               >
                 Continue

@@ -19,6 +19,10 @@ const DashboardLayout = () => {
             <NavItem to="/dashboard/addClasses" icon={<FaPlusCircle />}>Add Class</NavItem>
             <NavItem to="/dashboard/myClasses" icon={<FaChalkboardTeacher />}>My Class</NavItem>
             <NavItem to="/dashboard/profile" icon={<FaUserCircle />}>Profile</NavItem>
+            <NavItem to="/dashboard/my-enroll-class" icon={<FaUserCircle />}>my Enroll Class</NavItem>
+            <NavItem to="/dashboard/payment-history" >Payment History</NavItem>
+            <NavItem to="/dashboard/teacher-requests" >Teacher Request</NavItem>
+            <NavItem to="/dashboard/admin-all-classes" >All Class</NavItem>
           </nav>
         </div>
       </aside>
@@ -37,7 +41,10 @@ const DashboardLayout = () => {
           <NavItem to="/dashboard/addClasses" icon={<FaPlusCircle />}>Add Class</NavItem>
           <NavItem to="/dashboard/myClasses" icon={<FaChalkboardTeacher />}>My Class</NavItem>
           <NavItem to="/dashboard/profile" icon={<FaUserCircle />}>Profile</NavItem>
-          <NavItem to="/dashboard/my-enroll-class" icon={<FaUserCircle />}>my Enroll class</NavItem>
+          <NavItem to="/dashboard/my-enroll-class" >my Enroll class</NavItem>
+          <NavItem to="/dashboard/payment-history" >Payment History</NavItem>
+            <NavItem to="/dashboard/teacher-requests" >Teacher Request</NavItem>
+            <NavItem to="/dashboard/admin-all-classes" >All Class</NavItem>
         </div>
       </div>
 

@@ -32,7 +32,7 @@ const HomeTopClasses = () => {
               <h2 className="card-title">{singleClass.title}</h2>
               <p className="text-gray-600">Instructor: {singleClass.instructorName}</p>
               <p className="text-gray-500">Price: ${singleClass.price}</p>
-              <p className="text-sm text-gray-600">{singleClass.description.slice(0, 100)}...</p>
+              <p className="text-sm text-gray-600">{singleClass.description?.slice(0, 100)}...</p>
               <p>Total Enrolled: {singleClass.totalEnrolled || 0}</p>
 
               <div className="mt-4">

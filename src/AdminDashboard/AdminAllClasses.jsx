@@ -1,124 +1,127 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
+
+import Swal from 'sweetalert2';
+import { FaSpinner } from 'react-icons/fa';
 import useAxiosSecure from '../hooks/UseAxoisSecure';
+import Loading from '../pages/shared/Loading/Loading';
+import { useNavigate } from 'react-router';
 
 const AdminAllClasses = () => {
   const axiosSecure = useAxiosSecure();
-  const queryClient = useQueryClient();
+  const navigate=useNavigate()
 
-  // Fetch all classes
-  const { data: classes = [], isLoading } = useQuery({
-    queryKey: ['all-classes'],
+  const { data: classes = [], isLoading, refetch } = useQuery({
+    queryKey: ['admin-classes'],
     queryFn: async () => {
       const res = await axiosSecure.get('admin/classes');
       return res.data;
     },
   });
 
-  // Mutation to update class status
-  const updateStatusMutation = useMutation({
-    mutationFn: async ({ id, status }) => {
-      const res = await axiosSecure.patch(`admin/classes/${id}`, { status });
-      return res.data;
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['all-classes'] });
-    },
-  });
-
-  const handleUpdateStatus = (id, status) => {
-    updateStatusMutation.mutate({ id, status });
+  const handleApprove = async (id) => {
+    try {
+      const res = await axiosSecure.patch(`/admin/classes/approve/${id}`);
+      if (res.data.modifiedCount > 0) {
+        Swal.fire('Success!', 'Class approved successfully.', 'success');
+        refetch();
+      }
+    } catch (err) {
+      console.error(err);
+      Swal.fire('Error!', 'Failed to approve the class.', 'error');
+    }
   };
 
-  if (isLoading) return <p className="text-center text-lg font-medium py-10">Loading...</p>;
+  const handleReject = async (id) => {
+    try {
+      const res = await axiosSecure.patch(`/admin/classes/reject/${id}`);
+      if (res.data.modifiedCount > 0) {
+        Swal.fire('Rejected!', 'Class rejected successfully.', 'info');
+        refetch();
+      }
+    } catch (err) {
+      console.error(err);
+      Swal.fire('Error!', 'Failed to reject the class.', 'error');
+    }
+  };
+
+  if (isLoading) {
+    return <Loading></Loading>
+  }
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold mb-6 text-center text-blue-800">Manage All Classes</h2>
-      <div className="overflow-x-auto rounded-lg shadow-lg">
-        <table className="min-w-full table-auto border border-gray-300 bg-white">
-          <thead className="bg-blue-50">
-            <tr className="text-left text-gray-700">
-              <th className="px-6 py-3 border-b font-semibold">Title</th>
-              <th className="px-6 py-3 border-b font-semibold">Image</th>
-              <th className="px-6 py-3 border-b font-semibold">Email</th>
-              <th className="px-6 py-3 border-b font-semibold">Description</th>
-              <th className="px-6 py-3 border-b font-semibold">Status</th>
-              <th className="px-6 py-3 border-b font-semibold text-center">Actions</th>
+      <h2 className="text-3xl font-bold mb-6">All Classes</h2>
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Image</th>
+              <th>Email</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Actions</th>
+              <th>Progress</th>
             </tr>
           </thead>
           <tbody>
-            {classes.map((cls) => (
-              <tr key={cls._id} className="hover:bg-gray-50 transition">
-                <td className="px-6 py-4 border-b">{cls.title}</td>
-                <td className="px-6 py-4 border-b">
+            {classes.map((cls, idx) => (
+              <tr key={cls._id}>
+                <td>{idx + 1}</td>
+                <td className="font-semibold">{cls.title}</td>
+                <td>
                   <img
                     src={cls.image}
                     alt={cls.title}
-                    className="w-16 h-16 object-cover rounded-md shadow"
+                    className="w-16 h-16 object-cover rounded"
                   />
                 </td>
-                <td className="px-6 py-4 border-b text-sm text-gray-700">{cls.email}</td>
-                <td className="px-6 py-4 border-b text-sm text-gray-600">
-                  {cls.description?.slice(0, 50)}...
-                </td>
-                <td className="px-6 py-4 border-b capitalize font-semibold text-gray-800">
+                <td>{cls.email}</td>
+                <td>{cls.description?.slice(0, 50)}...</td>
+                <td>
                   <span
-                    className={`px-3 py-1 rounded-full text-xs font-medium ${
-                      cls.status === 'accepted'
-                        ? 'bg-green-100 text-green-700'
+                    className={`badge ${
+                      cls.status === 'approved'
+                        ? 'badge-success'
                         : cls.status === 'rejected'
-                        ? 'bg-red-100 text-red-700'
-                        : 'bg-yellow-100 text-yellow-800'
+                        ? 'badge-error'
+                        : 'badge-warning'
                     }`}
                   >
-                    {cls.status || 'pending'}
+                    {cls.status}
                   </span>
                 </td>
-                <td className="px-6 py-4 border-b text-center">
-                  <div className="flex flex-wrap justify-center gap-2">
-                    <button
-                      onClick={() => handleUpdateStatus(cls._id, 'accepted')}
-                      disabled={cls.status === 'accepted'}
-                      className={`px-4 py-1 text-sm rounded-lg font-semibold transition ${
-                        cls.status === 'accepted'
-                          ? 'bg-green-200 text-green-800 cursor-not-allowed'
-                          : 'bg-green-600 hover:bg-green-700 text-white'
-                      }`}
-                    >
-                      Approve
-                    </button>
-                    <button
-                      onClick={() => handleUpdateStatus(cls._id, 'rejected')}
-                      disabled={cls.status === 'rejected'}
-                      className={`px-4 py-1 text-sm rounded-lg font-semibold transition ${
-                        cls.status === 'rejected'
-                          ? 'bg-red-200 text-red-800 cursor-not-allowed'
-                          : 'bg-red-600 hover:bg-red-700 text-white'
-                      }`}
-                    >
-                      Reject
-                    </button>
-                    <button
-                      disabled={cls.status !== 'accepted'}
-                      className={`px-4 py-1 text-sm rounded-lg font-semibold transition ${
-                        cls.status === 'accepted'
-                          ? 'bg-indigo-600 hover:bg-indigo-700 text-white'
-                          : 'bg-gray-300 text-gray-600 cursor-not-allowed'
-                      }`}
-                    >
-                      Progress
-                    </button>
-                  </div>
+                <td className="space-x-2">
+                  <button
+                    className="btn btn-xs btn-success"
+                    disabled={cls.status === 'approved'}
+                    onClick={() => handleApprove(cls._id)}
+                  >
+                    Approve
+                  </button>
+                  <button
+                    className="btn btn-xs btn-error"
+                    disabled={cls.status === 'rejected'}
+                    onClick={() => handleReject(cls._id)}
+                  >
+                    Reject
+                  </button>
+                </td>
+                <td>
+                 <td>
+  <button
+    className="btn btn-xs btn-info"
+    disabled={cls.status !== 'approved'}
+    onClick={() => navigate(`/admin/class-progress/${cls._id}`)}
+  >
+    Progress
+  </button>
+</td>
+
                 </td>
               </tr>
             ))}
-            {classes.length === 0 && (
-              <tr>
-                <td colSpan="6" className="text-center py-6 text-gray-500">
-                  No classes found.
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       </div>

@@ -24,6 +24,10 @@ import TeacherRequest from "../AdminDashboard/TeacherRequest";
 import AllClassesAdmin from "../AdminDashboard/AdminAllClasses";
 
 
+import MyClasssDetails from "../Dashboard/MyClasssDetails";
+import MyClassDetails from "../Dashboard/MyClasssDetails";
+
+
 
  export const router = createBrowserRouter([
   {
@@ -87,6 +91,10 @@ import AllClassesAdmin from "../AdminDashboard/AdminAllClasses";
 {
   path:'myClasses',
   Component:MyClasses
+},
+{
+path:'myClass/:id',
+Component:MyClassDetails
 },
 {
   path:'updateClass/:id',

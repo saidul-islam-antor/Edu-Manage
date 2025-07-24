@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useQueryClient } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/UseAxoisSecure";
@@ -15,6 +15,7 @@ const CreateAssignmentModal = ({ classId, onClose }) => {
   const onSubmit = async (data) => {
     setIsLoading(true);
     try {
+      // classId স্ট্রিং ফরম্যাটে এখানে থাকবে (যেমন "688124dfbb05314bd94d2511")
       const assignmentData = {
         ...data,
         classId,
@@ -24,19 +25,18 @@ const CreateAssignmentModal = ({ classId, onClose }) => {
       const res = await axiosSecure.post("/assignments", assignmentData);
 
       if (res.data.insertedId) {
-         Swal.fire({
+        Swal.fire({
           icon: "success",
           title: "Assignment added!",
           text: "Your assignment was added successfully.",
           timer: 2000,
           showConfirmButton: false,
         });
-         // replace with toast if available
-        queryClient.invalidateQueries(["assignment-count", classId]);
+        queryClient.invalidateQueries(["assignments", classId]);
         reset();
         onClose();
       } else {
-Swal.fire({
+        Swal.fire({
           icon: "error",
           title: "Oops...",
           text: "Failed to add assignment. Please try again.",
@@ -44,7 +44,7 @@ Swal.fire({
       }
     } catch (error) {
       console.error("Error adding assignment:", error);
- Swal.fire({
+      Swal.fire({
         icon: "error",
         title: "Error",
         text: "Something went wrong. Please try again later.",
@@ -54,7 +54,7 @@ Swal.fire({
     }
   };
 
-  // Close modal on background click (optional)
+  // Modal বন্ধ করার জন্য background ক্লিক হ্যান্ডলার
   const handleBackgroundClick = (e) => {
     if (e.target === e.currentTarget) onClose();
   };

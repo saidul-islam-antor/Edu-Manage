@@ -28,11 +28,11 @@ const { data: assignments = [] } = useQuery({
   },
 });
 const totalAssignments = assignments.length;
-  const { data: totalSubmissions = 0 } = useQuery({
+  const { data: submissionCount = 0 } = useQuery({
     queryKey: ["submission-count", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/submissions/count/${id}`);
-      return res.data.count;
+      const res = await axiosSecure.get(`/assignments?classId${id}`);
+      return res.data;
     },
   });
 
@@ -52,7 +52,7 @@ const totalAssignments = assignments.length;
         </div>
         <div className="bg-yellow-100 p-4 rounded-xl">
           <p>Total Submissions</p>
-          <h1 className="text-xl font-bold">{totalSubmissions}</h1>
+          <h1 className="text-xl font-bold">{submissionCount}</h1>
         </div>
       </div>
 

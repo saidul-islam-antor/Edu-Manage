@@ -24,7 +24,7 @@ import TeacherRequest from "../AdminDashboard/TeacherRequest";
 import AllClassesAdmin from "../AdminDashboard/AdminAllClasses";
 
 
-import MyClasssDetails from "../Dashboard/MyClasssDetails";
+
 import MyClassDetails from "../Dashboard/MyClasssDetails";
 
 
@@ -104,6 +104,7 @@ Component:MyClassDetails
   path:'my-enroll-class',
   Component:MyEnrollClasses
 },
+
 {
   path:'my-enroll-class/:id',
   Component:MyEnrollClassDetails

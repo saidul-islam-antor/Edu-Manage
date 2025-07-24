@@ -48,7 +48,7 @@ const MyEnrollClasses = () => {
               <p className="text-gray-700 mb-4">Instructor: {}</p>
 
               <button
-                onClick={() => navigate(`/my-enroll-class/${cls._id}`)} 
+                onClick={() => navigate(`/dashboard/my-enroll-class/${cls.classId}`)} 
                 className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
               >
                 Continue

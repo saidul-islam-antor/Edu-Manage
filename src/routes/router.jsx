@@ -26,6 +26,8 @@ import AllClassesAdmin from "../AdminDashboard/AdminAllClasses";
 
 
 import MyClassDetails from "../Dashboard/MyClasssDetails";
+import Users from "../AdminDashboard/Users";
+import MyProfile from "../Dashboard/MyProfile";
 
 
 
@@ -120,6 +122,15 @@ Component:MyClassDetails
 {
  path:'admin-all-classes',
  Component:AllClassesAdmin
+},
+{
+  path:"users",
+  element:<Users></Users>
+},
+{
+path:"profile",
+element:<MyProfile></MyProfile>
+
 }
 
     ]

@@ -23,6 +23,7 @@ const DashboardLayout = () => {
             <NavItem to="/dashboard/payment-history" >Payment History</NavItem>
             <NavItem to="/dashboard/teacher-requests" >Teacher Request</NavItem>
             <NavItem to="/dashboard/admin-all-classes" >All Class</NavItem>
+                <NavItem to="/dashboard/users" >Users</NavItem>
           </nav>
         </div>
       </aside>
@@ -45,6 +46,7 @@ const DashboardLayout = () => {
           <NavItem to="/dashboard/payment-history" >Payment History</NavItem>
             <NavItem to="/dashboard/teacher-requests" >Teacher Request</NavItem>
             <NavItem to="/dashboard/admin-all-classes" >All Class</NavItem>
+            <NavItem to="/dashboard/users" >Users</NavItem>
         </div>
       </div>
 

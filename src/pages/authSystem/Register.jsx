@@ -31,6 +31,9 @@ const onSubmit = (data) => {
       const userInfo = {
         email: data.email,
         role: "student",
+        displayName: data.name ||"",
+        photoURL:data.photoURL ||"",
+
         created_at: new Date().toISOString(),
         last_log_in: new Date().toISOString(),
       };

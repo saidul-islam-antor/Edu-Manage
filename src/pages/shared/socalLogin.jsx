@@ -24,6 +24,8 @@ const SocailLogin = () => {
 const userInfo={
   email:user.email,
   role:"student",
+   name:user.displayName,
+        photoURL:user.photoURL,
   created_at:new Date().toISOString(),
   last_log_in:new Date().toISOString()
 }

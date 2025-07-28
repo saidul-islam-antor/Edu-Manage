@@ -28,6 +28,10 @@ import AllClassesAdmin from "../AdminDashboard/AdminAllClasses";
 import MyClassDetails from "../Dashboard/MyClasssDetails";
 import Users from "../AdminDashboard/Users";
 import MyProfile from "../Dashboard/MyProfile";
+import Forbidden from "../pages/Forbidden";
+import AdminRoutes from "../PrivateRoutes/AdminRoutes";
+import StudentRoutes from "../PrivateRoutes/StudentRoutes";
+import TeacherRoutes from "../PrivateRoutes/TeacherRoutes";
 
 
 
@@ -53,6 +57,10 @@ import MyProfile from "../Dashboard/MyProfile";
     {
       path:'/allClasses',
       Component:AllClasses
+    },
+    {
+      path:"forbidden",
+      Component:Forbidden
     },
     {
       path:'/classDetails/:id',
@@ -88,44 +96,51 @@ import MyProfile from "../Dashboard/MyProfile";
     children:[
 {
   path:'addClasses',
-  Component:AddClass
+  // Component:AddClass
+  element:<TeacherRoutes><AddClass></AddClass></TeacherRoutes>
 },
 {
   path:'myClasses',
-  Component:MyClasses
+  // Component:MyClasses
+  element:<TeacherRoutes><MyClasses></MyClasses></TeacherRoutes>
 },
 {
 path:'myClass/:id',
-Component:MyClassDetails
+// Component:MyClassDetails
+element:<TeacherRoutes><MyClassDetails></MyClassDetails></TeacherRoutes>
 },
 {
   path:'updateClass/:id',
-  Component:UpdateClass
+  // Component:UpdateClass
+  element:<TeacherRoutes><UpdateClass></UpdateClass></TeacherRoutes>
 },
 {
   path:'my-enroll-class',
-  Component:MyEnrollClasses
+  // Component:MyEnrollClasses
+  element:<StudentRoutes><MyEnrollClasses></MyEnrollClasses></StudentRoutes>
 },
 
 {
   path:'my-enroll-class/:id',
-  Component:MyEnrollClassDetails
+  // Component:MyEnrollClassDetails
+  element:<StudentRoutes><MyEnrollClassDetails></MyEnrollClassDetails></StudentRoutes>
 },
 {
   path:'payment-history',
-  Component:PaymentHistory
+  // Component:PaymentHistory
+  element:<StudentRoutes><PaymentHistory></PaymentHistory></StudentRoutes>
 },
 {
   path:'teacher-requests',
-  Component:TeacherRequest
+ element:<AdminRoutes><TeacherRequest></TeacherRequest></AdminRoutes>
 },
 {
  path:'admin-all-classes',
- Component:AllClassesAdmin
+ element:<AdminRoutes><AllClassesAdmin></AllClassesAdmin></AdminRoutes>
 },
 {
   path:"users",
-  element:<Users></Users>
+  element:<AdminRoutes><Users></Users></AdminRoutes>
 },
 {
 path:"profile",

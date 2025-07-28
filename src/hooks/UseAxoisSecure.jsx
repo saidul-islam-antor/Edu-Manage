@@ -9,7 +9,7 @@ const useAxiosSecure = () => {
     });
     
 
-    // Request interceptor যোগ করো
+    
     instance.interceptors.request.use((config) => {
       const token = localStorage.getItem('edu-token');
       console.log(token)
@@ -20,7 +20,15 @@ const useAxiosSecure = () => {
     });
 
     return instance;
-  }, []); // শুধু একবারই তৈরি হবে
+  }, []); 
+
+
+  // axiosSecure.interceptors.response.use(res=>{
+  //   return res;
+  // },error=>{
+  //   console.log("inside res interceptor", error)
+  // })
+
 
   return axiosSecure;
 };

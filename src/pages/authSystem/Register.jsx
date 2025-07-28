@@ -4,10 +4,14 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 import SocailLogin from '../shared/socalLogin';
 import loginImg from '../../assets/loginImg.jpg';
+import Swal from 'sweetalert2';
+import useAxiosPublic from '../../hooks/UseAxoisPublic';
+
 
 const Register = () => {
   const location=useLocation()
   const navigate =useNavigate()
+  const useAxios=useAxiosPublic()
   const from =location.state?.from || '/'
   const {
     register,
@@ -15,19 +19,53 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const { createUser } = useContext(AuthContext);
+  const { createUser,updateProfileUser } = useContext(AuthContext);
 
-  const onSubmit = (data) => {
-    console.log(data);
-    createUser(data.email, data.password)
-      .then((result) => {
-        console.log(result);
-        navigate(from)
-      })
-      .catch((error) => {
-        console.error(error);
+const onSubmit = (data) => {
+  createUser(data.email, data.password)
+    .then(async (result) => {
+      const user = result.user;
+      console.log(user);
+
+      // 1️⃣ Save user info to database
+      const userInfo = {
+        email: data.email,
+        role: "student",
+        created_at: new Date().toISOString(),
+        last_log_in: new Date().toISOString(),
+      };
+
+      await useAxios.post('/users', userInfo);
+
+      // 2️⃣ Update Firebase profile
+      const userProfile = {
+        displayName: data.name,
+        photoURL: data.photoURL,
+      };
+      await updateProfileUser(userProfile);
+
+      
+      // 5️⃣ Success alert & navigate
+      Swal.fire({
+        icon: 'success',
+        title: 'Registration Successful!',
+        text: 'Welcome to the platform.',
+        confirmButtonColor: '#3085d6',
       });
-  };
+
+      navigate(from, { replace: true });
+    })
+    .catch((error) => {
+      console.error(error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: error.message || 'Registration failed. Try again.',
+        confirmButtonColor: '#d33',
+      });
+    });
+};
+
 
   return (
     <div className="p-12 bg-base-200">

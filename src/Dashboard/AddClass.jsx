@@ -3,11 +3,13 @@ import Swal from 'sweetalert2';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import useAxiosSecure from '../hooks/UseAxoisSecure';
+import { useNavigate } from 'react-router';
 
 const AddClass = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const axiosSecure = useAxiosSecure();
+  const navigate=useNavigate()
 
   const onSubmit = async (data) => {
     const classData = {
@@ -29,6 +31,7 @@ const AddClass = () => {
           title: 'Class Added',
           text: 'Your class has been submitted for review.',
         });
+        navigate('/dashboard/myClasses')
         reset();
       }
     } catch (error) {

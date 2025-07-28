@@ -5,7 +5,8 @@ import Swal from "sweetalert2";
 import { useState, useContext } from "react";
 import useAxiosSecure from "../hooks/UseAxoisSecure";
 import { AuthContext } from "../context/AuthContext";
-import ReactStars from "react-rating-stars-component";
+import StarRatings from 'react-star-ratings';
+
 
 const MyEnrollClassDetails = () => {
   const { id } = useParams();
@@ -25,27 +26,32 @@ const MyEnrollClassDetails = () => {
     enabled: !!id,
   });
 
-  const onSubmit = async (formData, assignmentId) => {
-    try {
-      const submissionText = formData[`submission-${assignmentId}`];
-      const res = await axiosSecure.post("/assignment-submit", {
-        assignmentId,
-        studentEmail: user?.email,
-        submissionText,
-        
+ const onSubmit = async (formData, assignmentId) => {
+  try {
+    const submissionText = formData[`submission-${assignmentId}`];
 
-      });
+    // API কল, POST /assignment-submit
+    const res = await axiosSecure.post("/assignment-submit", {
+      assignmentId,
+      studentEmail: user?.email,
+      submissionText,
+    });
 
-      if (res.data.success) {
-        await axiosSecure.patch(`/assignments/increment/${assignmentId}`);
-        Swal.fire("✅ Submitted", res.data.message, "success");
-        reset();
-        refetch();
-      }
-    } catch (error) {
-      Swal.fire("❌ Error", error?.response?.data?.message || "Submission failed", "error");
+    if (res.data.success) {
+      // API থেকে response এ already submissionCount বাড়ানো হয়েছে, তাই আর আলাদা patch করার দরকার নেই।
+      Swal.fire("✅ Submitted", res.data.message, "success");
+      reset();
+      refetch();
     }
-  };
+  } catch (error) {
+    Swal.fire(
+      "❌ Error",
+      error?.response?.data?.message || "Submission failed",
+      "error"
+    );
+  }
+};
+
 
   const handleFeedbackSubmit = async (e) => {
     e.preventDefault();
@@ -127,7 +133,9 @@ const MyEnrollClassDetails = () => {
             ))}
           </tbody>
         </table>
+        
       </div>
+    
 
       {/* Feedback Modal */}
       {openModal && (
@@ -145,14 +153,19 @@ const MyEnrollClassDetails = () => {
             ></textarea>
 
             <div className="flex items-center gap-2">
-              <span className="font-medium">Your Rating:</span>
-              <ReactStars
-                count={5}
-                onChange={(newRating) => setRatingValue(newRating)}
-                size={28}
-                activeColor="#ffd700"
-                value={ratingValue}
-              />
+             
+              <h3 className="text-lg font-semibold mb-2">Your Rating:</h3>
+<StarRatings
+  rating={ratingValue}
+  starRatedColor="#ffd700"
+  starHoverColor="#ffc107"
+  changeRating={(newRating) => setRatingValue(newRating)}
+  numberOfStars={5}
+  name='rating'
+  starDimension="25px"
+  starSpacing="4px"
+/>
+              
             </div>
 
             <div className="flex justify-end gap-2">

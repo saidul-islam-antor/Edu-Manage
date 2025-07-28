@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/UseAxoisSecure";
 import ReactStars from "react-rating-stars-component";
 import { useMediaQuery } from "react-responsive";
+import StarRatings from 'react-star-ratings';
 
 const FeedbackCarousel = () => {
   const axiosSecure = useAxiosSecure();
@@ -49,13 +50,12 @@ const FeedbackCarousel = () => {
         {chunkedFeedbacks.map((group, index) => (
           <div
             key={index}
-            className={`grid gap-6 ${
-              chunkSize === 1
+            className={`grid gap-6 ${chunkSize === 1
                 ? "grid-cols-1"
                 : chunkSize === 2
-                ? "grid-cols-2"
-                : "grid-cols-3"
-            } px-4`}
+                  ? "grid-cols-2"
+                  : "grid-cols-3"
+              } px-4`}
           >
             {group.map((fb) => (
               <div
@@ -63,7 +63,21 @@ const FeedbackCarousel = () => {
                 className="bg-[#2B1D3A] text-white p-6 rounded-3xl shadow-md hover:shadow-lg transition"
               >
                 <div className="flex flex-col items-center text-center space-y-4">
-                  <p className="text-4xl text-white">“</p>
+                  
+                 <div className="flex items-center justify-between w-full px-2">
+  {/* Left-side quote */}
+  <p className="text-4xl text-white">“</p>
+
+  {/* Right-side rating */}
+  <StarRatings
+    rating={fb.rating || 0}
+    starRatedColor="#ffd700"
+    numberOfStars={5}
+    name='rating-display'
+    starDimension="20px"
+    starSpacing="2px"
+  />
+</div>
 
                   <p className="text-sm text-gray-200 leading-relaxed">
                     {fb.description.length > 160
@@ -71,14 +85,7 @@ const FeedbackCarousel = () => {
                       : fb.description}
                   </p>
 
-                  <ReactStars
-                    count={5}
-                    value={fb.rating}
-                    size={20}
-                    isHalf={true}
-                    edit={false}
-                    activeColor="#facc15"
-                  />
+
 
                   <div className="flex items-center justify-center gap-4 mt-4">
                     <img

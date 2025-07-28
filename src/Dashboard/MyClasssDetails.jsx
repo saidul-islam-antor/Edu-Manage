@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
-
 import { useState } from "react";
 import CreateAssignmentModal from "./CreateAssignmentModal";
 import useAxiosSecure from "../hooks/UseAxoisSecure";
@@ -10,8 +9,7 @@ const MyClassDetails = () => {
   const [openModal, setOpenModal] = useState(false);
   const axiosSecure = useAxiosSecure();
 
-
-
+  // Total Enrolled Query
   const { data: totalEnrolled = 0 } = useQuery({
     queryKey: ["enrolled-count", id],
     queryFn: async () => {
@@ -20,21 +18,22 @@ const MyClassDetails = () => {
     },
   });
 
-const { data: assignments = [] } = useQuery({
-  queryKey: ["assignments", id],
-  queryFn: async () => {
-    const res = await axiosSecure.get(`/assignments?classId=${id}`);
-    return res.data;
-  },
-});
-const totalAssignments = assignments.length;
-  const { data: submissionCount = 0 } = useQuery({
-    queryKey: ["submission-count", id],
+  // Assignments Query
+  const { data: assignments = [] } = useQuery({
+    queryKey: ["assignments", id],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/assignments?classId${id}`);
+      const res = await axiosSecure.get(`/assignments?classId=${id}`);
       return res.data;
     },
   });
+
+  const totalAssignments = assignments.length;
+
+  // 🔥 Total Submission Count (reduce করে হিসাব করছি)
+  const totalSubmissions = assignments.reduce(
+    (acc, assignment) => acc + (assignment.submissionCount || 0),
+    0
+  );
 
   return (
     <div className="p-6 space-y-6">
@@ -52,7 +51,7 @@ const totalAssignments = assignments.length;
         </div>
         <div className="bg-yellow-100 p-4 rounded-xl">
           <p>Total Submissions</p>
-          <h1 className="text-xl font-bold">{submissionCount}</h1>
+          <h1 className="text-xl font-bold">{totalSubmissions}</h1>
         </div>
       </div>
 

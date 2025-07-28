@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthContext';
 import { useLocation, useNavigate } from 'react-router';
+import useAxiosPublic from '../../hooks/UseAxoisPublic';
 
 
 
@@ -12,11 +13,23 @@ const SocailLogin = () => {
  const {singInWithGoogle}=useContext(AuthContext)
  const location=useLocation()
  const navigate=useNavigate()
+  const useAxios=useAxiosPublic()
  const from =location.state?.from || '/'
      const handleGoogle=()=>{
         singInWithGoogle()
-        .then(result=>{
+        .then(async(result)=>{
+          const user=result.user;
             console.log(result.user)
+            // update userInfo in the database
+const userInfo={
+  email:user.email,
+  role:"student",
+  created_at:new Date().toISOString(),
+  last_log_in:new Date().toISOString()
+}
+
+const users = await useAxios.post('/users',userInfo)
+console.log("user update info",users.data)
             navigate(from)
           
 

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/UseAxoisSecure";
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const StatsSection = () => {
   const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["stats"],
@@ -24,27 +29,46 @@ const StatsSection = () => {
     );
 
   return (
-    <div className="flex flex-col md:flex-row items-center p-6 gap-8 bg-gray-100 rounded-lg">
+    <div
+      className="flex flex-col md:flex-row items-center p-6 gap-8 bg-gray-100 rounded-lg"
+      data-aos="fade-up"
+    >
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1">
-        <div className="bg-white p-6 rounded-lg shadow text-center">
+        <div
+          className="bg-white p-6 rounded-lg shadow text-center"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
           <p className="text-gray-600">Total Users</p>
           <h2 className="text-3xl font-bold">{data?.totalUsers ?? 0}</h2>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow text-center">
+        <div
+          className="bg-white p-6 rounded-lg shadow text-center"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
           <p className="text-gray-600">Total Classes</p>
           <h2 className="text-3xl font-bold">{data?.totalClasses ?? 0}</h2>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow text-center">
+        <div
+          className="bg-white p-6 rounded-lg shadow text-center"
+          data-aos="zoom-in"
+          data-aos-delay="500"
+        >
           <p className="text-gray-600">Total Enrollments</p>
           <h2 className="text-3xl font-bold">{data?.totalEnrolled ?? 0}</h2>
         </div>
       </div>
 
       {/* Right Side Image */}
-      <div className="flex-1">
+      <div
+        className="flex-1"
+        data-aos="fade-left"
+        data-aos-delay="700"
+      >
         <img
           src="https://i.ibb.co/F4q7rt5W/back-school-facebook-cover-banner-template-106176-1191.jpg"
           alt="Education Illustration"

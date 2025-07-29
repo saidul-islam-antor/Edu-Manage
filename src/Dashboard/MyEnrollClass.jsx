@@ -45,7 +45,7 @@ const MyEnrollClasses = () => {
             />
             <div className="p-4">
               <h3 className="text-xl font-semibold mb-2">{cls.title}</h3>
-              <p className="text-gray-700 mb-4">Instructor: {}</p>
+           
 
               <button
                 onClick={() => navigate(`/dashboard/my-enroll-class/${cls.classId}`)} 

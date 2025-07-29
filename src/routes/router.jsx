@@ -33,6 +33,9 @@ import AdminRoutes from "../PrivateRoutes/AdminRoutes";
 import StudentRoutes from "../PrivateRoutes/StudentRoutes";
 import TeacherRoutes from "../PrivateRoutes/TeacherRoutes";
 
+import AdminAllClassesDetais from "../AdminDashboard/AdminAllClassesDetais";
+import NotFound from "../pages/NotFound";
+
 
 
  export const router = createBrowserRouter([
@@ -44,6 +47,10 @@ import TeacherRoutes from "../PrivateRoutes/TeacherRoutes";
         index:true,
         Component:Home
         
+    },
+    {
+      path:"*",
+      Component:NotFound,
     },
     {
       path:'/login',
@@ -65,7 +72,8 @@ import TeacherRoutes from "../PrivateRoutes/TeacherRoutes";
     {
       path:'/classDetails/:id',
       element:<PrivateRoutes>
-        <ClassDetails></ClassDetails>
+        {/* <ClassDetails></ClassDetails> */}
+        <StudentRoutes><ClassDetails></ClassDetails></StudentRoutes>
       </PrivateRoutes>
     },
     {
@@ -137,6 +145,10 @@ element:<TeacherRoutes><MyClassDetails></MyClassDetails></TeacherRoutes>
 {
  path:'admin-all-classes',
  element:<AdminRoutes><AllClassesAdmin></AllClassesAdmin></AdminRoutes>
+},
+{
+path:"process/:id",
+element:<AdminRoutes><AdminAllClassesDetais></AdminAllClassesDetais></AdminRoutes>
 },
 {
   path:"users",

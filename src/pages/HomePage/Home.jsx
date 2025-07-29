@@ -5,6 +5,8 @@ import HomeTopClasses from './component/HomeTopClass';
 import Feedback from './component/Feedback';
 import StatsSection from './component/StartsSection';
 import InspireTeachersSection from './component/InspironTeacherSection';
+import EduManageExtraSections from './component/EduManageExtraSections';
+import HomeSections from './component/HomeSection';
 
 const Home = () => {
     return (
@@ -14,6 +16,8 @@ const Home = () => {
           <HomeTopClasses></HomeTopClasses>
           <StatsSection></StatsSection>
           <InspireTeachersSection></InspireTeachersSection>
+          <EduManageExtraSections></EduManageExtraSections>
+          <HomeSections></HomeSections>
           <Feedback></Feedback>
         </div>
     );

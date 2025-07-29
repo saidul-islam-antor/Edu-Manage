@@ -113,7 +113,7 @@ const AdminAllClasses = () => {
   <button
     className="btn btn-xs btn-info"
     disabled={cls.status !== 'approved'}
-    onClick={() => navigate(`/admin/class-progress/${cls._id}`)}
+    onClick={() => navigate(`/dashboard/process/${cls._id}`)}
   >
     Progress
   </button>

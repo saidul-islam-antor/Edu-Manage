@@ -14,6 +14,7 @@ const MyProfile = () => {
   }
 
   const { displayName, email, role, photoURL, phone } = profile;
+  console.log(profile)
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg border border-gray-300">

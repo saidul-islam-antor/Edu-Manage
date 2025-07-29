@@ -33,7 +33,7 @@ const FeedbackCarousel = () => {
 
   return (
     <div className="my-12 px-4 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold mb-8 text-center text-white">
+      <h2 className="text-3xl font-bold mb-8 text-center ">
         What Students Say
       </h2>
 
@@ -97,9 +97,7 @@ const FeedbackCarousel = () => {
                       <h3 className="font-bold text-white">{fb.name}</h3>
                       <p className="text-sm text-gray-300">{fb.title}</p>
                     </div>
-                    <span className="ml-auto bg-purple-600 text-white text-xs px-3 py-1 rounded-lg">
-                      Batch 9
-                    </span>
+                    
                   </div>
                 </div>
               </div>

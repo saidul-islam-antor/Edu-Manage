@@ -26,8 +26,8 @@ const HomeTopClasses = () => {
   return (
     <section className="max-w-7xl mx-auto px-4 md:px-10 py-12">
       <h2
-        className="text-4xl font-extrabold text-center mb-12 text-indigo-900"
-        data-aos="fade-down"
+        className="text-4xl font-extrabold text-primary text-center mb-12 "
+       
       >
         Top Classes
       </h2>

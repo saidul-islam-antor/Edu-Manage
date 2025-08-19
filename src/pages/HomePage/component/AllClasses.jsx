@@ -25,16 +25,17 @@ const AllClasses = () => {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {classes.map(singleClass => (
-          <div key={singleClass._id} className="card bg-base-100 shadow-xl">
+          <div key={singleClass._id} className="bg-white rounded-xl overflow-hidden shadow-md cursor-pointer flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
             <figure>
               <img src={singleClass.image} alt={singleClass.title} className="h-48 w-full object-cover" />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">{singleClass.title}</h2>
-              <p className="text-gray-600">Instructor: {singleClass.instructorName}</p>
-              <p className="text-gray-500">Price: ${singleClass.price}</p>
-              <p className="text-sm text-gray-600">{singleClass.description?.slice(0, 100)}...</p>
-              <p>Total Enrolled: {singleClass.totalEnrolled || 0}</p>
+              <h2 className="card-title text-primary w-full h-full object-cover rounded-t-xl transition-transform duration-500 hover:scale-110">{singleClass.title}</h2>
+
+              <p className="text-gray-600 font-bold">Instructor: {singleClass.instructorName}</p>
+              <p className="text-gray-500 font-semibold">Price: ${singleClass.price}</p>
+              <p className="text-sm text-gray-600 font-semibold">{singleClass.description?.slice(0, 100)}...</p>
+              <p className="font-semibold text-gray-600">Total Enrolled: {singleClass.totalEnrolled || 0}</p>
 
               <div className="mt-4">
                 <Link to={`/classDetails/${singleClass._id}`}>

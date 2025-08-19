@@ -32,7 +32,7 @@ const activeClass = ({ isActive }) =>
   
 
   return (
-    <div className="navbar w-full sticky top-0 left-0 z-50 px-4 lg:px-20 text-gray-800 shadow-md bg-white">
+    <div className="navbar w-full fixed top-0 left-0 z-50 px-4 lg:px-20 text-gray-800 shadow-md bg-white">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

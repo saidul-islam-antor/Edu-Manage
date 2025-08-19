@@ -119,47 +119,47 @@ const TeachForm = () => {
 
   // Show the form
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white border rounded shadow">
+    <div className="max-w-2xl mx-auto mt-10 p-6  border rounded shadow">
       <h2 className="text-2xl font-bold mb-6 text-center">Teach on EduManage</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
         <div>
-          <label className="block mb-1 font-medium">Name</label>
+          <label className="block mb-1 font-medium text-gray-900">Name</label>
           <input
             value={user.displayName}
             readOnly
-            className="w-full px-4 py-2 border bg-gray-100 rounded"
+            className="w-full text-gray-50 px-4 py-2 border  rounded"
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Email</label>
+          <label className="block mb-1 text-black font-medium">Email</label>
           <input
             value={user.email}
             readOnly
-            className="w-full px-4 py-2 border bg-gray-100 rounded"
+            className="w-full   px-4 py-2 border rounded"
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Profile Image</label>
+          <label className="block mb-1 font-medium ">Profile Image</label>
           <img
             src={user.photoURL}
             alt="User"
-            className="w-20 h-20 rounded-full object-cover border"
+            className="w-20 h-20 rounded-full object-cover border "
           />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Experience</label>
+          <label className="block mb-1  text-gray-50 font-medium">Experience</label>
           <select
             {...register('experience', { required: true })}
-            className="w-full px-4 py-2 border rounded"
+            className="w-full px-4 py-2 border  rounded"
           >
-            <option value="">Select experience level</option>
-            <option value="beginner">Beginner</option>
-            <option value="mid-level">Mid-level</option>
-            <option value="experienced">Experienced</option>
+            <option className='text-gray-600' value="">Select experience level</option>
+            <option className='text-gray-600' value="beginner">Beginner</option>
+            <option className='text-gray-500' value="mid-level">Mid-level</option>
+            <option className='text-gray-600' value="experienced">Experienced</option>
           </select>
           {errors.experience && <p className="text-red-500 text-sm">Experience is required.</p>}
         </div>
@@ -180,7 +180,7 @@ const TeachForm = () => {
             {...register('category', { required: true })}
             className="w-full px-4 py-2 border rounded"
           >
-            <option value="">Select a category</option>
+            <option className='text-gray-600' value="">Select a category</option>
             {categories.map((cat, i) => (
               <option key={i} value={cat}>{cat}</option>
             ))}

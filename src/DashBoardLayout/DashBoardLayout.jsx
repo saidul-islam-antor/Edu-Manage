@@ -20,7 +20,9 @@ const DashboardLayout = () => {
   if (error) return <p className="text-center text-red-500 mt-10">Failed to load role.</p>;
 
   return (
+  
     <div className="flex min-h-screen font-poppins">
+     
       {/* Desktop Sidebar */}
       <aside className="w-64 border-r shadow-lg hidden lg:block bg-white">
         <div className="p-6">

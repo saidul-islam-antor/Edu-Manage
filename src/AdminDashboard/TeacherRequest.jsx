@@ -45,12 +45,12 @@ const TeacherRequest = () => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-6">📋 Teacher Requests</h2>
+    <div className="p-4 bg-base-100 text-base-content">
+      <h2 className="text-2xl text-primary font-bold mb-6">📋 Teacher Requests</h2>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border text-left">
-          <thead className="bg-gray-100">
+        <table className="min-w-full table table-zebra border text-left">
+          <thead className="">
             <tr>
               <th className="p-3">Image</th>
               <th className="p-3">Name</th>
@@ -70,7 +70,7 @@ const TeacherRequest = () => {
               </tr>
             ) : (
               requests.map((req) => (
-                <tr key={req._id} className="border-t hover:bg-gray-50">
+                <tr key={req._id} className="border-t hover:bg-gray-500">
                   <td className="p-3">
                     <img
                       src={req.image}

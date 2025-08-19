@@ -68,7 +68,7 @@ const Users = () => {
         <Loading></Loading>
       ) : (
         <>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto bg-base-100 text-base-content">
             <table className="table table-zebra w-full">
               <thead>
                 <tr>

@@ -25,7 +25,7 @@ const AllClasses = () => {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {classes.map(singleClass => (
-          <div key={singleClass._id} className="bg-white rounded-xl overflow-hidden shadow-md cursor-pointer flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+          <div key={singleClass._id} className=" rounded-xl overflow-hidden shadow-md cursor-pointer flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
             <figure>
               <img src={singleClass.image} alt={singleClass.title} className="h-48 w-full object-cover" />
             </figure>

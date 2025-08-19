@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const axiosPublic = axios.create({
-  baseURL: `http://localhost:3000`,  // তোমার backend URL
+  baseURL: `https://ph-project-12-server.vercel.app`,  // তোমার backend URL
   // public requests এর জন্য withCredentials:false থাকতেই পারে
 });
 

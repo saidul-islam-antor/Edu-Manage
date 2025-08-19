@@ -17,16 +17,22 @@ const Navbar = () => {
         console.error(error);
       });
   };
+  
+const activeClass = ({ isActive }) =>
+    isActive
+      ? "hover:text-blue-600 font-semibold "
+      : "";
 
   const navLinks = <>
-    <li><NavLink to='/'>Home</NavLink></li>
-    <li><NavLink to='/allClasses'>All Class</NavLink></li>
-    <li><NavLink to='/teachForm'>Teach on EduManage</NavLink></li>
-    {user && <li><NavLink to='/dashboard'>Dashboard</NavLink></li>}
+    <li><NavLink to='/' className={activeClass}>Home</NavLink></li>
+    <li><NavLink to='/allClasses'className={activeClass}>All Class</NavLink></li>
+    <li><NavLink to='/teachForm'className={activeClass}>Teach on EduManage</NavLink></li>
+    {user && <li><NavLink to='/dashboard'className={activeClass}>Dashboard</NavLink></li>}
   </>;
+  
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar w-full sticky top-0 left-0 z-50 px-4 lg:px-20 text-gray-800 shadow-md bg-white">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -42,17 +48,49 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <img src={logo} className='w-16' alt="Site Logo" />
+       
+        <img src={logo} className='w-16 rounded-full' alt="Site Logo" />
         <p className='font-bold ml-2'> EduManage</p>
       </div>
 
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 ">
           {navLinks}
         </ul>
+       
       </div>
 
       <div className="navbar-end relative">
+     
+<div className="">
+  <label className="swap swap-rotate mr-2">
+    <input
+      type="checkbox"
+      onChange={() => {
+        const html = document.documentElement;
+        if (html.getAttribute('data-theme') === 'dark') {
+          html.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+        } else {
+          html.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      }}
+      checked={document.documentElement.getAttribute('data-theme') === 'dark'}
+      readOnly
+    />
+    {/* sun icon */}
+    <svg className="swap-on fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M5.64 17.657l-1.414 1.414-1.414-1.414 1.414-1.414zm12.02 0l1.414 1.414-1.414 1.414-1.414-1.414zm1.414-12.02l1.414 1.414-1.414 1.414-1.414-1.414zm-12.02 0l-1.414-1.414 1.414-1.414 1.414 1.414zm6.364-2.121V1h-2v2.121zm0 18.364V23h-2v-2.121zm7.778-7.778h2.121v2h-2.121zm-18.364 0H1v2h2.121zm9.192-4.95a5 5 0 1 1 0 7.07 5 5 0 0 1 0-7.07z"/>
+    </svg>
+    {/* moon icon */}
+    <svg className="swap-off fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M21.64 13.64a9 9 0 1 1-11.31-11.31 1 1 0 0 1 1.05.24 1 1 0 0 1 .24 1.05A7 7 0 1 0 20.35 12.35a1 1 0 0 1 1.29-1.29z"/>
+    </svg>
+  </label>
+  {/* ...rest of your navbar-end code... */}
+</div>
+
         {
           user ? (
             <div className="relative">
@@ -75,7 +113,7 @@ const Navbar = () => {
                   </div>
                   <NavLink
                     to="/dashboard"
-                    className="block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700"
+                    className=" block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700"
                     onClick={() => setOpenDropdown(false)}
                   >
                     Dashboard

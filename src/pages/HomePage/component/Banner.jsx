@@ -6,11 +6,10 @@ import bannerImg from "../../../assets/banner.jpg"; // নিজের ছবি
 const Banner = () => {
   return (
     <section
-      className="bg-gradient-to-r from-sky-100 to-blue-50 py-10 md:py-20"
-      data-aos="fade-up"
-      data-aos-duration="1500"
+      className="bg-gradient-to-r from-sky-100 to-blue-50 py-10 md:py-20  "
+     
     >
-      <div className="max-w-7xl mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between gap-10">
+      <div className="  max-w-7xl mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between gap-10">
         {/* Text Content */}
         <motion.div
           className="flex-1 text-center md:text-left"

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/UseAxoisSecure";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Loading from "../../shared/Loading/Loading";
 
 const StatsSection = () => {
   const axiosSecure = useAxiosSecure();
@@ -19,7 +20,7 @@ const StatsSection = () => {
     },
   });
 
-  if (isLoading) return <p className="text-center p-6">Loading...</p>;
+  if (isLoading) return <Loading></Loading>
 
   if (error)
     return (

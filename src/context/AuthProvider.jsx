@@ -54,7 +54,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         try {
-          const jwtRes = await axios.post('http://localhost:3000/jwt', {
+          const jwtRes = await axios.post('https://ph-project-12-server.vercel.app/jwt', {
             email: currentUser.email,
           });
 

@@ -113,19 +113,19 @@ const Users = () => {
           </div>
 
           {/* Pagination Controls */}
-          <div className="mt-4 flex justify-center gap-4">
+          <div className="mt-4 flex justify-center gap-4 font-bold text-base-500 ">
             <button
-              className="btn btn-outline btn-sm"
+              className="btn btn-outline btn-sm bg-base-100"
               onClick={handlePrev}
               disabled={currentPage === 1}
             >
               Previous
             </button>
-            <span className="font-semibold">
+            <span className="font-semibold bg-base-100">
               Page {currentPage} of {totalPages}
             </span>
             <button
-              className="btn btn-outline btn-sm"
+              className="btn btn-outline btn-sm bg-base-100"
               onClick={handleNext}
               disabled={currentPage === totalPages}
             >

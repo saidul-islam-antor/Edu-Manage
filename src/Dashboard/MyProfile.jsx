@@ -17,7 +17,7 @@ const MyProfile = () => {
   console.log(profile)
 
   return (
-    <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg border border-gray-300">
+    <div className="max-w-xl mx-auto mt-10 p-6 bg-base-100 rounded-xl shadow-lg border border-gray-300">
       <div className="flex flex-col items-center text-center">
         <img
           src={photoURL}

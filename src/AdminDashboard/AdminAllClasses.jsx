@@ -49,7 +49,7 @@ const AdminAllClasses = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-base-100 text-base-content">
       <h2 className="text-3xl font-bold mb-6">All Classes</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">

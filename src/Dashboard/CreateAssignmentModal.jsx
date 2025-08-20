@@ -64,7 +64,7 @@ const CreateAssignmentModal = ({ classId, onClose }) => {
       onClick={handleBackgroundClick}
       className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
     >
-      <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-lg">
+      <div className="bg-base-100  p-6 rounded-xl shadow-lg w-full max-w-lg">
         <h2 className="text-xl font-semibold mb-4">Create Assignment</h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>

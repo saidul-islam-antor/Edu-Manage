@@ -27,8 +27,18 @@ const activeClass = ({ isActive }) =>
     <li><NavLink to='/' className={activeClass}>Home</NavLink></li>
     <li><NavLink to='/allClasses'className={activeClass}>All Class</NavLink></li>
     <li><NavLink to='/teachForm'className={activeClass}>Teach on EduManage</NavLink></li>
-    {user && <li><NavLink to='/dashboard'className={activeClass}>Dashboard</NavLink></li>}
+    {user &&
+     <>
+     <li><NavLink to='/dashboard'className={activeClass}>Dashboard</NavLink></li>
+     <li><NavLink to='/settings'className={activeClass}>Settings</NavLink></li>
+     
+     </>
+    
+     }
+    
+ 
   </>;
+  
   
 
   return (
@@ -91,6 +101,7 @@ const activeClass = ({ isActive }) =>
   {/* ...rest of your navbar-end code... */}
 </div>
 
+       
         {
           user ? (
             <div className="relative">
@@ -107,20 +118,20 @@ const activeClass = ({ isActive }) =>
               </div>
 
               {openDropdown && (
-                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg border rounded-lg z-20">
-                  <div className="px-4 py-2 text-sm font-medium text-gray-800 border-b">
+                <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-base-200 shadow-lg border rounded-lg z-20">
+                  <div className="px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-200 border-b">
                     {user.displayName || 'User'}
                   </div>
                   <NavLink
                     to="/dashboard"
-                    className=" block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700"
+                    className=" block px-4 py-2 hover:bg-gray-100 dark:hover:bg-base-300 text-sm text-gray-700 dark:text-gray-200"
                     onClick={() => setOpenDropdown(false)}
                   >
                     Dashboard
                   </NavLink>
                   <button
                     onClick={handleLogOut}
-                    className="block w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-red-600"
+                    className="block w-full text-left px-4 py-2 hover:bg-gray-100 dark:hover:bg-base-300 text-sm text-red-600"
                   >
                     Logout
                   </button>
@@ -129,8 +140,11 @@ const activeClass = ({ isActive }) =>
             </div>
           ) : (
             <>
-              <NavLink to="/login" className="btn">Login</NavLink>
-              <NavLink to="/register" className="btn ml-2">Register</NavLink>
+              {/* Mobile: Only Login */}
+              <NavLink to="/login" className="btn inline-flex lg:hidden">Login</NavLink>
+              {/* Desktop: Login and Register */}
+              <NavLink to="/login" className="btn hidden lg:inline-flex">Login</NavLink>
+              <NavLink to="/register" className="btn ml-2 hidden lg:inline-flex">Register</NavLink>
             </>
           )
         }

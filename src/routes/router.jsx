@@ -35,6 +35,7 @@ import TeacherRoutes from "../PrivateRoutes/TeacherRoutes";
 
 import AdminAllClassesDetais from "../AdminDashboard/AdminAllClassesDetais";
 import NotFound from "../pages/NotFound";
+import Settings from "../pages/Settings";
 
 
 
@@ -80,6 +81,12 @@ import NotFound from "../pages/NotFound";
       path:'/teachForm',
       element:<PrivateRoutes>
         <TeachForm></TeachForm>
+      </PrivateRoutes>
+    },
+    {
+      path:'/settings',
+      element:<PrivateRoutes>
+        <Settings></Settings>
       </PrivateRoutes>
     },
     {

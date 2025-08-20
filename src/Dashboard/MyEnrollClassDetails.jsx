@@ -142,7 +142,7 @@ const MyEnrollClassDetails = () => {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <form
             onSubmit={handleFeedbackSubmit}
-            className="bg-white p-6 rounded-lg shadow-md w-full max-w-md space-y-4"
+            className="bg-base-100 p-6 rounded-lg shadow-md w-full max-w-md space-y-4"
           >
             <h3 className="text-xl font-semibold mb-2">Teaching Evaluation Report</h3>
             <textarea

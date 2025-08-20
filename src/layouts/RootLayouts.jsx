@@ -9,8 +9,8 @@ const RootLayouts = () => {
         document.documentElement.setAttribute('data-theme', theme);
     }, []);
     return (
-        <div className='max-w-7xl mx-auto '>
-            <Navbar />
+        <div className='max-w-7xl mx-auto  overflow-hidden'>
+            <Navbar/>
             <Outlet />
             <Footer />
         </div>

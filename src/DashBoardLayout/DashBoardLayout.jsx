@@ -26,7 +26,7 @@ const DashboardLayout = () => {
       {/* Desktop Sidebar */}
       <aside className="w-64 border-r shadow-lg hidden lg:block bg-white">
         <div className="p-6">
-          <Link to='/'><h2 className="text-2xl font-bold mb-8 text-center">EduManage</h2></Link>
+          <Link to='/'><h2 className="text-2xl text-primary font-bold mb-8 text-center">EduManage</h2></Link>
           <nav className="space-y-2">
             <SidebarNavItems role={role} />
           </nav>

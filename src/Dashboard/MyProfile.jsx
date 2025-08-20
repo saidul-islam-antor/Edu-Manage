@@ -42,7 +42,7 @@ const MyProfile = () => {
         {role === "teacher" && (
           <div className="text-left">
             <p>📚 <strong>Teacher Privileges:</strong></p>
-            <ul className="list-disc ml-5 text-gray-700">
+            <ul className="list-disc ml-5 text-gray-500">
               <li>Manage your classes</li>
               <li>View student submissions</li>
               <li>Create assignments</li>

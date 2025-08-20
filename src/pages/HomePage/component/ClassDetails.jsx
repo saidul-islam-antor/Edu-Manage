@@ -43,8 +43,8 @@ const ClassDetails = () => {
   if (isLoading || checkingEnroll) return <Loading />;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
-      <div className="bg-white rounded-2xl shadow-xl flex flex-col md:flex-row overflow-hidden">
+    <div className="max-w-6xl mx-auto px-4 py-10 mt-20">
+      <div className="bg-base-100 text-base-content rounded-2xl shadow-xl flex flex-col md:flex-row overflow-hidden">
         <div className="md:w-1/2">
           <img
             src={classInfo.image}
@@ -55,11 +55,11 @@ const ClassDetails = () => {
 
         <div className="md:w-1/2 p-8 flex flex-col justify-between">
           <div>
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">{classInfo.title}</h2>
-            <p className="text-lg text-gray-600 mb-2">
-              <span className="font-semibold text-gray-800">Instructor:</span> {classInfo.instructorName}
+            <h2 className="text-4xl font-bold text-base-content font-bold mb-4">{classInfo.title}</h2>
+            <p className="text-lg text-base-content mb-2">
+              <span className="font-semibold text-base-content">Instructor:</span> {classInfo.instructorName}
             </p>
-            <p className="text-gray-700 mb-4">{classInfo.description}</p>
+            <p className="text-base-content mb-4">{classInfo.description}</p>
             <p className="text-2xl font-bold text-blue-600">Price: ${classInfo.price}</p>
           </div>
 

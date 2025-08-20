@@ -6,7 +6,7 @@ import bannerImg from "../../../assets/banner.jpg"; // নিজের ছবি
 const Banner = () => {
   return (
     <section
-      className="bg-gradient-to-r from-sky-100 to-blue-50 py-10 md:py-20  "
+      className="bg-gradient-to-r from-base-100 to-base-100 py-10 md:py-20  "
      
     >
       <div className=" mt-20 max-w-7xl mx-auto px-4 flex flex-col-reverse md:flex-row items-center justify-between gap-10">
@@ -19,12 +19,12 @@ const Banner = () => {
           viewport={{ once: true }}
         >
           <motion.h1
-            className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-4"
+            className="text-4xl md:text-5xl font-bold text-base-content leading-tight mb-4"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 1 }}
           >
-            Unlock Your Potential with{" "}
+             Unlock Your Potential with{" "}
             <span className="text-blue-600">EduManage</span>
           </motion.h1>
 

@@ -26,7 +26,7 @@ const MyEnrollClasses = () => {
   if (error) return <p>Error loading enrolled classes</p>;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-6xl mx-auto px-4 py-10 ">
       <h2 className="text-3xl font-bold mb-6 text-center">My Enrolled Classes</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {enrolledClasses.length === 0 && (
@@ -36,7 +36,7 @@ const MyEnrollClasses = () => {
         {enrolledClasses.map((cls) => (
           <div
             key={cls._id}
-            className="bg-white shadow-md rounded-lg overflow-hidden"
+            className=" shadow-md rounded-lg overflow-hidden"
           >
             <img
               src={cls.image}

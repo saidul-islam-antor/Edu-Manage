@@ -44,13 +44,13 @@ const MyClasses = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10 bg-base-300">
+    <div className="max-w-6xl mx-auto px-4 py-10 bg-base-200">
       <h2 className="text-3xl font-bold mb-6 text-center">My Classes</h2>
 
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {myClasses.map(singleClass => (
           <div key={singleClass._id} className="bg-base-100 shadow-xl rounded-xl overflow-hidden">
-            <img src={singleClass.image} alt={singleClass.title} className="w-full bg-base-100 h-52 object-cover" />
+            <img src={singleClass.image} alt={singleClass.title} className="w-full  h-52 object-cover" />
             <div className="p-5 space-y-2">
               <h3 className="text-xl font-semibold">{singleClass.title}</h3>
               <p><span className="font-medium">Name:</span> {singleClass.instructorName}</p>

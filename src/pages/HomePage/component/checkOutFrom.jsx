@@ -126,12 +126,12 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="w-full max-w-md  mx-auto">
       <CardElement className="border p-4 rounded mb-4" />
       <button
         type="submit"
         disabled={!stripe || loading}
-        className="bg-blue-600 w-full text-white px-6 py-2 rounded hover:bg-blue-700 transition disabled:opacity-60"
+        className="bg-blue-600 w-full text-base-content px-6 py-2 rounded hover:bg-blue-700 transition disabled:opacity-60"
       >
         {loading ? 'Processing...' : `Pay ৳${price}`}
       </button>

@@ -24,9 +24,9 @@ const DashboardLayout = () => {
     <div className="flex min-h-screen font-poppins">
      
       {/* Desktop Sidebar */}
-      <aside className="w-64 border-r shadow-lg hidden lg:block bg-white">
+      <aside className="w-64 border-r shadow-lg hidden lg:block bg-base-100">
         <div className="p-6">
-          <Link to='/'><h2 className="text-2xl text-primary font-bold mb-8 text-center">EduManage</h2></Link>
+          <Link to='/'><h2 className="text-2xl font-bold text-primary mb-8 text-center">EduManage</h2></Link>
           <nav className="space-y-2">
             <SidebarNavItems role={role} />
           </nav>
@@ -34,22 +34,22 @@ const DashboardLayout = () => {
       </aside>
 
       {/* Mobile Sidebar Header */}
-      <div className="lg:hidden fixed top-0 left-0 w-full bg-white shadow z-50 flex justify-between items-center px-4 py-3 border-b">
+      <div className="lg:hidden fixed top-0 left-0 w-full bg-base-100 shadow z-50 flex justify-between items-center px-4 py-3 border-b">
         <label htmlFor="drawer-toggle" className="btn btn-sm btn-outline">☰</label>
-        <Link to="/"> <h1 className="text-xl font-bold">Dashboard</h1></Link>
+        <Link to="/"> <h1 className="text-xl text-primary font-bold">Dashboard</h1></Link>
       </div>
 
       {/* Mobile Drawer Sidebar */}
       <input id="drawer-toggle" type="checkbox" className="hidden peer" />
-      <div className="fixed top-0 left-0 z-40 w-64 h-screen bg-white border-r shadow-lg transform -translate-x-full peer-checked:translate-x-0 transition-transform lg:hidden">
+      <div className="fixed top-0 left-0 z-40 w-64 h-screen bg-base-100 border-r shadow-lg transform -translate-x-full peer-checked:translate-x-0 transition-transform lg:hidden">
         <div className="p-6 space-y-3">
-          <Link to='/'><h2 className="text-2xl font-bold mb-4 text-center">EduManage</h2></Link>
+          <Link to='/'><h2 className="text-2xl text-primary font-bold mb-4 text-center">EduManage</h2></Link>
           <SidebarNavItems role={role} />
         </div>
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 bg-gray-50 p-6 pt-16 lg:pt-6">
+      <main className="flex-1 bg-base-100 p-6 pt-16 lg:pt-6">
         <Outlet />
       </main>
     </div>
@@ -99,7 +99,7 @@ const NavItem = ({ to, icon, label }) => (
     to={to}
     className={({ isActive }) =>
       `flex items-center gap-4 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200
-      ${isActive ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700 hover:bg-gray-100 hover:text-blue-500'}`
+      ${isActive ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-400 hover:bg-gray-100 hover:text-blue-500'}`
     }
   >
     <span className="text-lg">{icon}</span>

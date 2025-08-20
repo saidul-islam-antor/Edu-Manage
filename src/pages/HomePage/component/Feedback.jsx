@@ -33,7 +33,7 @@ const FeedbackCarousel = () => {
 
   return (
     <div className="my-12 px-4 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold mb-8 text-center ">
+      <h2 className="text-3xl font-bold mb-8 text-center text-primary ">
         What Students Say
       </h2>
 

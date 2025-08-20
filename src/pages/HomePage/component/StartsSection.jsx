@@ -31,35 +31,35 @@ const StatsSection = () => {
 
   return (
     <div
-      className="flex flex-col md:flex-row items-center p-6 gap-8 bg-gray-100 rounded-lg"
+      className="flex flex-col md:flex-row items-center p-6 gap-8 bg-base-100 rounded-lg my-20 shadow-xl"
       data-aos="fade-up"
     >
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 shadow-xl">
         <div
-          className="bg-white p-6 rounded-lg shadow text-center"
+          className="bg-base-100 p-6 rounded-lg shadow text-center"
           data-aos="zoom-in"
           data-aos-delay="100"
         >
-          <p className="text-gray-600">Total Users</p>
+          <p className="text-base-content">Total Users</p>
           <h2 className="text-3xl font-bold">{data?.totalUsers ?? 0}</h2>
         </div>
 
         <div
-          className="bg-white p-6 rounded-lg shadow text-center"
+          className="bg-base-100 p-6 rounded-lg shadow text-center"
           data-aos="zoom-in"
           data-aos-delay="300"
         >
-          <p className="text-gray-600">Total Classes</p>
+          <p className="text-base-content">Total Classes</p>
           <h2 className="text-3xl font-bold">{data?.totalClasses ?? 0}</h2>
         </div>
 
         <div
-          className="bg-white p-6 rounded-lg shadow text-center"
+          className="bg-base-100 p-6 rounded-lg shadow text-center"
           data-aos="zoom-in"
           data-aos-delay="500"
         >
-          <p className="text-gray-600">Total Enrollments</p>
+          <p className="text-base-content">Total Enrollments</p>
           <h2 className="text-3xl font-bold">{data?.totalEnrolled ?? 0}</h2>
         </div>
       </div>

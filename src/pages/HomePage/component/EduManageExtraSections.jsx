@@ -41,11 +41,11 @@ const EduManageExtraSections = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-16 space-y-20">
+    <div className="max-w-7xl mx-auto px-6 py-16 space-y-20 ">
 
       {/* Student Success Stories */}
       <section
-        className="bg-indigo-50 rounded-lg p-10 shadow-lg"
+        className="bg-base-100 rounded-lg p-10 shadow-lg"
         data-aos="fade-up"
       >
         <h2 className="text-3xl font-extrabold text-indigo-900 mb-8 text-center">
@@ -56,11 +56,11 @@ const EduManageExtraSections = () => {
           {successStories.map(({ text, author }, i) => (
             <div
               key={i}
-              className="bg-white p-6 rounded-lg shadow cursor-default"
+              className="bg-base-300 p-6 rounded-lg shadow cursor-default"
               data-aos="fade-up"
               data-aos-delay={i * 150}
             >
-              <p className="text-gray-700 mb-4 italic">"{text}"</p>
+              <p className="text-base-content mb-4 italic">"{text}"</p>
               <h4 className="font-semibold text-indigo-800">— {author}</h4>
             </div>
           ))}
@@ -69,10 +69,10 @@ const EduManageExtraSections = () => {
 
       {/* Featured Courses */}
       <section
-        className="bg-white rounded-lg p-10 shadow-lg border border-indigo-200"
+        className="bg-base-100 rounded-lg p-10 shadow-lg border border-indigo-200"
         data-aos="fade-up"
       >
-        <h2 className="text-3xl font-extrabold text-indigo-900 mb-10 text-center">
+        <h2 className="text-3xl font-extrabold text-primary mb-10 text-center">
           Featured Courses
         </h2>
 
@@ -85,7 +85,7 @@ const EduManageExtraSections = () => {
               data-aos-delay={i * 150}
             >
               <h3 className="text-xl font-semibold text-indigo-800 mb-2">{title}</h3>
-              <p className="text-gray-600 mb-4">{desc}</p>
+              <p className="text-base-content mb-4">{desc}</p>
               <span className="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium">
                 {category}
               </span>

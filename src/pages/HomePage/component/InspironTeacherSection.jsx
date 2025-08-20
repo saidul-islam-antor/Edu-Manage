@@ -9,7 +9,7 @@ const InspireTeachersSection = () => {
   }, []);
 
   return (
-    <section className="bg-gradient-to-r from-indigo-100 via-purple-100 to-pink-100 py-16 px-4 sm:px-8 lg:px-24 text-gray-800">
+    <section className="bg-base-100 shadow-xl py-16 px-4 sm:px-8 lg:px-24 text-base-content">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
 
         {/* Text Section with AOS */}
@@ -18,7 +18,7 @@ const InspireTeachersSection = () => {
           <p className="text-lg mb-6">
             Join EduManage as a teacher and share your expertise with eager learners across the globe. Whether you're a seasoned educator or a passionate professional, this is your opportunity to make a real impact.
           </p>
-          <ul className="list-disc ml-5 space-y-2 text-base text-gray-700">
+          <ul className="list-disc ml-5 space-y-2  text-base-content">
             <li>Teach your favorite subjects</li>
             <li>Flexible class management</li>
             <li>Reach thousands of students</li>

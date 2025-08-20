@@ -119,7 +119,7 @@ const TeachForm = () => {
 
   // Show the form
   return (
-    <div className="max-w-2xl mx-auto mt-10 p-6  border rounded shadow">
+    <div className="max-w-2xl mx-auto mt-10 p-6 mt-20  border rounded shadow">
       <h2 className="text-2xl font-bold mb-6 text-center">Teach on EduManage</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 

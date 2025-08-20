@@ -24,7 +24,7 @@ const HomeTopClasses = () => {
     );
 
   return (
-    <section className="max-w-7xl mx-auto px-4 md:px-10 py-12">
+    <section className="max-w-7xl mx-auto px-4 md:px-10 py-12 ">
       <h2
         className="text-4xl font-extrabold text-primary text-center mb-12 "
        
@@ -36,7 +36,7 @@ const HomeTopClasses = () => {
         {topClasses.map((singleClass, index) => (
           <div
             key={singleClass._id}
-            className="bg-white rounded-xl overflow-hidden shadow-md cursor-pointer flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+            className="bg-base-100  rounded-xl overflow-hidden shadow-md cursor-pointer flex flex-col transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
             data-aos="fade-up"
             data-aos-delay={index * 100} // stagger animation by index
           >
@@ -46,7 +46,7 @@ const HomeTopClasses = () => {
                 alt={singleClass.title}
                 className="w-full h-full object-cover rounded-t-xl transition-transform duration-500 hover:scale-110"
               />
-              <div className="absolute top-2 right-2 bg-indigo-600 text-white text-sm px-3 py-1 rounded-lg shadow-lg font-semibold">
+              <div className="absolute top-2 right-2 bg-indigo-600 text-base-content text-sm px-3 py-1 rounded-lg shadow-lg font-semibold">
                 ${singleClass.price}
               </div>
             </div>
@@ -55,14 +55,14 @@ const HomeTopClasses = () => {
               <h3 className="text-xl font-semibold text-indigo-800 mb-2">
                 {singleClass.title}
               </h3>
-              <p className="text-gray-600 mb-1">
+              <p className="text-base-content mb-1">
                 Instructor:{" "}
                 <span className="font-medium">{singleClass.instructorName}</span>
               </p>
-              <p className="text-gray-500 text-sm mb-3 line-clamp-3">
+              <p className="text-base-content text-sm mb-3 line-clamp-3">
                 {singleClass.description || "No description available."}
               </p>
-              <p className="text-gray-700 font-semibold mb-4">
+              <p className="text-base-content font-semibold mb-4">
                 Total Enrolled: {singleClass.totalEnrolled || 0}
               </p>
 

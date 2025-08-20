@@ -20,7 +20,7 @@ const AllClasses = () => {
   if (isLoading) return <Loading></Loading>;
 
   return (
-    <div className="px-4 md:px-10 py-10">
+    <div className="px-4 md:px-10 mt-20 py-10">
       <h2 className="text-3xl font-bold text-center mb-6">All Approved Classes</h2>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -32,10 +32,10 @@ const AllClasses = () => {
             <div className="card-body">
               <h2 className="card-title text-primary w-full h-full object-cover rounded-t-xl transition-transform duration-500 hover:scale-110">{singleClass.title}</h2>
 
-              <p className="text-gray-600 font-bold">Instructor: {singleClass.instructorName}</p>
-              <p className="text-gray-500 font-semibold">Price: ${singleClass.price}</p>
-              <p className="text-sm text-gray-600 font-semibold">{singleClass.description?.slice(0, 100)}...</p>
-              <p className="font-semibold text-gray-600">Total Enrolled: {singleClass.totalEnrolled || 0}</p>
+              <p className="text-base-content font-bold">Instructor: {singleClass.instructorName}</p>
+              <p className="text-base-content font-semibold">Price: ${singleClass.price}</p>
+              <p className="text-sm text-base-content font-semibold">{singleClass.description?.slice(0, 100)}...</p>
+              <p className="font-semibold text-base-content">Total Enrolled: {singleClass.totalEnrolled || 0}</p>
 
               <div className="mt-4">
                 <Link to={`/classDetails/${singleClass._id}`}>

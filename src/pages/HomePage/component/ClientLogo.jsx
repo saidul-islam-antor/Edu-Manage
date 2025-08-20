@@ -20,7 +20,7 @@ const ClientLogoSlider = () => {
   }, []);
 
   return (
-    <div className="py-10 mt-12 bg-gray-50 ">
+    <div className="py-10 mt-16 bg-base-100 shadow-sm ">
       <h2
         className="text-center text-primary text-3xl font-bold mb-14"
         data-aos="fade-down"
